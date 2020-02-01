@@ -1,11 +1,14 @@
 <template>
   <v-app class="inspire">
+  
     <v-parallax
     dark
     src="@/assets/background.png"
     class = "background"
     height = "770"
   >
+
+  
   <v-row
       align="center"
       justify="center"
@@ -50,6 +53,13 @@ export default {
 #background {
   max-height: 100%
 
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 
 

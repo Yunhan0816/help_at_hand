@@ -1,17 +1,20 @@
 <template>
-
-<v-sheet>
-   <transition name="fade">
-            <p v-if="show"> You Are Not Alone </p>
-            </transition> 
-
-
-  <v-btn color="#faa69b" dark @click.stop="dialog = true" x-large = true
-    >I want to report a sexual assualt case</v-btn
-  >
+<v-container>
+  <transition name="slide-fade">
+  <v-card outlined = false v-if=show color = "transparent"> 
+    <v-card-text class="display-3 font-weight-bold">You Are Not Alone 
+    </v-card-text>
+    </v-card>
+  </transition> 
+<v-btn color="#faa69b" dark @click.stop="dialog = true" x-large = true
+    >I want to report a sexual assualt case</v-btn>
+    <v-sheet>
 <v-dialog v-model="dialog" max-width="500">
+  
         <v-card>
+          
           <v-container>
+            
             
             <v-form @submit.prevent="addCase">
               <div id='example-3'>
@@ -81,7 +84,9 @@
           </v-container>
         </v-card>
       </v-dialog>  
+      
 </v-sheet>
+</v-container>
 </template>
 
 <script>
@@ -136,7 +141,7 @@ export default {
   },
   methods: {
     async welcome() {
-    setTimeout(() => this.show = true, 2000);
+    setTimeout(() => this.show = true, 1000);
     
     },
     async addPerp() {
@@ -177,10 +182,22 @@ export default {
 </script>
 
 <style scoped>
-.fade-enter-active, .fade-leave-active {
+/* .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+} */
+
+.slide-fade-enter-active {
+  transition: all 2s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
   opacity: 0;
 }
 </style>
