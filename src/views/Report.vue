@@ -11,7 +11,6 @@
         <Report />
       </v-container>
     </v-content>
-
     <v-footer app>
       <span>&copy; TechTogether 2020</span>
     </v-footer>
@@ -30,4 +29,5 @@ export default {
     Report
   }
 };
+// testing
 </script>

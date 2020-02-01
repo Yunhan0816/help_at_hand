@@ -3,12 +3,7 @@
     <v-layout text-center wrap>
       <v-row>
         <v-col>
-          <v-img
-            :src="require('../assets/the-logo.png')"
-            class="mx-auto my-4"
-            contain
-            height="35"
-          ></v-img>
+          <v-img :src="require('../assets/logo.png')" class="mx-auto my-4" contain height="35"></v-img>
           <v-card class="mx-auto" color="white" width="400px">
             <v-card-title class="justify-center">
               <h3>Log in</h3>
