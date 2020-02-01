@@ -17,14 +17,14 @@ export default {
         }
         map.setCenter(results[0].geometry.location);
         map.fitBounds(results[0].geometry.viewport);
-        var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
-            getTileUrl:  function(coord,  zoom)  {  
-                      return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=_TOKEN_ID_";  
-            },  
-            name:  "Air  Quality",  
-        });  
+    //     var  waqiMapOverlay  =  new  google.maps.ImageMapType({  
+    //         getTileUrl:  function(coord,  zoom)  {  
+    //                   return  'https://tiles.waqi.info/tiles/usepa-aqi/'  +  zoom  +  "/"  +  coord.x  +  "/"  +  coord.y  +  ".png?token=_TOKEN_ID_";  
+    //         },  
+    //         name:  "Air  Quality",  
+    //     });  
   
-      map.overlayMapTypes.insertAt(0,waqiMapOverlay);
+    //   map.overlayMapTypes.insertAt(0,waqiMapOverlay);
       });
     } catch (error) {
       console.error(error);
