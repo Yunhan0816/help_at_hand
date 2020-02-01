@@ -1,11 +1,18 @@
 <template>
+
 <v-sheet>
+   <transition name="fade">
+            <p v-if="show"> You Are Not Alone </p>
+            </transition> 
+
+
   <v-btn color="#faa69b" dark @click.stop="dialog = true" x-large = true
     >I want to report a sexual assualt case</v-btn
   >
 <v-dialog v-model="dialog" max-width="500">
         <v-card>
           <v-container>
+            
             <v-form @submit.prevent="addCase">
               <div id='example-3'>
                 <input type="checkbox" id="rape" value="Rape" v-model="casetype">
@@ -114,6 +121,7 @@ export default {
     perpnames: [],
     relation: [],
     details: '',
+    show:false,
     // inhaler: ["Yes", "No"],
     
    
@@ -121,12 +129,16 @@ export default {
   }),
   
   mounted() {
-    //this.getEvents();
+     this.welcome();
   },
   computed: {
     
   },
   methods: {
+    async welcome() {
+    setTimeout(() => this.show = true, 2000);
+    
+    },
     async addPerp() {
 
       this.perpnames.push(this.currentperp);
@@ -144,14 +156,12 @@ export default {
           perpnames: this.perpnames,
           details: this.details,
           test:({"perpnames": this.perpnames, "perprelations": this.relation}),
-
-        
-  
         });
        
         (this.casetype = ""), (this.picker = ""),
           (this.physicalBoolean = ""), (this.details = "");
         alert("Succeessfully added");
+        this.welcome();
        
       } else {
         alert(
@@ -159,48 +169,18 @@ export default {
         );
       }
     },
-    editEvent(ev) {
-      this.currentlyEditing = ev.id;
-    },
-    async updateEvent(ev) {
-      await db
-        .collection("patient")
-        .doc(this.currentlyEditing)
-        .update({
-          details: ev.details
-        });
-      (this.selectedOpen = false), (this.currentlyEditing = null);
-    },
-    async deleteEvent(ev) {
-      await db
-        .collection("patient")
-        .doc(ev)
-        .delete();
-      (this.selectedOpen = false), this.getEvents();
-    },
-    showEvent({ nativeEvent, event }) {
-      const open = () => {
-        this.selectedEvent = event;
-        this.selectedElement = nativeEvent.target;
-        setTimeout(() => (this.selectedOpen = true), 10);
-      };
-      if (this.selectedOpen) {
-        this.selectedOpen = false;
-        setTimeout(open, 10);
-      } else {
-        open();
-      }
-      nativeEvent.stopPropagation();
-    },
-    updateRange({ start, end }) {
-      this.start = start;
-      this.end = end;
-    },
-    nth(d) {
-      return d > 3 && d < 21
-        ? "th"
-        : ["th", "st", "nd", "rd", "th", "th", "th", "th", "th", "th"][d % 10];
-    }
+ 
+   
+
   }
 };
 </script>
+
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+</style>

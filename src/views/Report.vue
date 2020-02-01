@@ -18,6 +18,7 @@
     
 
     <v-content>
+      
       <v-container class="fill-height" fluid>
 
         <Report />
@@ -50,4 +51,7 @@ export default {
   max-height: 100%
 
 }
+
+
 </style>
+
