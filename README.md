@@ -1,28 +1,3 @@
-<<<<<<< HEAD
-# help_at_hand
+# Help At Hand
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
-# help_at_hand
->>>>>>> a7b0971e9881a74032f4de9f66774c0fe84e0a9a
+## a web app that gives victims of sexual assult a voice
