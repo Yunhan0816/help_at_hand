@@ -40,7 +40,7 @@
 // //     ]
 // // };
 
-export default app;
+// export default app;
 // export { auth, db, authUI, authUIConfig };
 
 new Vue({
@@ -51,6 +51,7 @@ new Vue({
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
+import "./firebase/init.js";
 // import store from "./store";
 import vuetify from "./plugins/vuetify";
 import firebase from "firebase";
@@ -74,3 +75,4 @@ firebase.auth().onAuthStateChanged(async () => {
   }
 });
 export const db = firebase.firestore();
+export default app;

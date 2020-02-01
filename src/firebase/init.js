@@ -25,12 +25,6 @@ const authUIConfig = {
   signInOptions: [
     {
       provider: firebase.auth.EmailAuthProvider.PROVIDER_ID
-    },
-    {
-      provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-      customParameters: {
-        prompt: "select_account"
-      }
     }
   ]
 };
