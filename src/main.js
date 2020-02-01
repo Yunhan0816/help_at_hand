@@ -40,14 +40,14 @@
 // //     ]
 // // };
 
-// export default app;
-// // export { auth, db, authUI, authUIConfig };
+export default app;
+// export { auth, db, authUI, authUIConfig };
 
-// new Vue({
-//   router,
-//   vuetify,
-//   render: h => h(App)
-// }).$mount("#app");
+new Vue({
+  router,
+  vuetify,
+  render: h => h(App)
+}).$mount("#app");
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -64,7 +64,7 @@ Vue.config.productionTip = false;
 var app = null;
 firebase.auth().onAuthStateChanged(async () => {
   if (!app) {
-    await store.dispatch("setUser");
+    // await store.dispatch("setUser");
     new Vue({
       router,
       // store,

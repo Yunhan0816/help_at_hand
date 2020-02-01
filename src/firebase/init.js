@@ -35,5 +35,4 @@ const authUIConfig = {
   ]
 };
 
-export default app;
 export { auth, db, authUI, authUIConfig };
