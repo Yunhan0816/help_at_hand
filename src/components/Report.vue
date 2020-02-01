@@ -1,6 +1,6 @@
 <template>
 <v-sheet>
-  <v-btn color="green lighten-1" dark @click.stop="dialog = true"
+  <v-btn color="pink lighten-1" dark @click.stop="dialog = true"
     >I want to report a sexual assulat case</v-btn
   >
 
@@ -9,42 +9,51 @@
           <v-container>
             <v-form @submit.prevent="addCase">
               <div id='example-3'>
-                <input type="checkbox" id="rape" value="Rape" v-model="checkedNames">
+                <input type="checkbox" id="rape" value="Rape" v-model="casetype">
                 <label for="rape">Rape</label>
                 <br>
-                <input type="checkbox" id="unwantedtouching" value="Unwanted Touching" v-model="checkedNames">
+                <input type="checkbox" id="unwantedtouching" value="Unwanted Touching" v-model="casetype">
                 <label for="unwantedtouching">Unwanted Touching</label>
                 <br>
-                <input type="checkbox" id="minors" value="Sexual Contact with Minors" v-model="checkedNames">
+                <input type="checkbox" id="minors" value="Sexual Contact with Minors" v-model="casetype">
                 <label for="minors">Sexual Contact with Minors</label>
                 <br>
-                <input type="checkbox" id="sexualharrassment" value="Sexual Harrassment" v-model="checkedNames">
+                <input type="checkbox" id="sexualharrassment" value="Sexual Harrassment" v-model="casetype">
                 <label for="sexualharrassment">Sexual Harrassment</label>
                 <br>
-                <input type="checkbox" id="fociblesodomy" value="Focible sodomy" v-model="checkedNames">
+                <input type="checkbox" id="fociblesodomy" value="Focible sodomy" v-model="casetype">
                 <label for="fociblesodomy">Focible sodomy</label>
                 <br>
-                <input type="checkbox" id="incest" value="Incest" v-model="checkedNames">
-                <label for="incest">Incest</label>
-                <br>
-               <!-- <span>Checked names: {{ checkedNames }}</span> -->
+               <!-- <span>Checked names: {{ casetype }}</span> -->
               </div>
               <!-- <v-select
                 :items="casetype"
                 v-model="casetype"
                 label="Select your condition today! (Required)"
               ></v-select> -->
-              <v-select :items="physical" v-model="physical" label="Are you physically hurt?"></v-select>
+              <v-select :items="physical" v-model="physical" label="Were you physically hurt?"></v-select>
               
-              <!-- <v-select :items="pill" v-model="taken_pill" label="Taken your pills? (Required)"></v-select> -->
-              <!-- <v-select :items="inhaler" v-model="inhaler" label=""></v-select> -->
+              <v-date-picker v-model="picker"></v-date-picker>
+
               
-        <v-date-picker v-model="picker"></v-date-picker>
+            <v-text-field
+              v-model="currentperp"
+              type="text"
+              label="Name of the perpetrator (optional)"
+              
+            ></v-text-field>
+            <br>
+            <v-btn
+                color="pink lighten-1"
+                class="mr-4"
+                @click="addPerp"
+              >Add another</v-btn>
+            
 
               <v-row justify="center"></v-row>
               <v-btn
                 type="submit"
-                color="green lighten-1"
+                color="pink lighten-1"
                 class="mr-4"
                 @click.stop="dialog = false"
               >Submit Case</v-btn>
@@ -65,11 +74,11 @@ export default {
         picker: new Date().toISOString().substr(0, 10),
       
     
-    checkedNames: [],
+    casetype: [],
     today: new Date().toISOString().substr(0, 10),
     focus: new Date().toISOString().substr(0, 10),
    
-    casetype: [
+    case: [
       "Rape",
       "Unwanted Touching",
       "Sexual Contact with Minors",
@@ -79,6 +88,8 @@ export default {
     ],
     // pill: ["Yes", "No"],
     physical: ["Yes","No"],
+    currentperp: "",
+    perpnames: [],
     // inhaler: ["Yes", "No"],
     
    
@@ -97,29 +108,25 @@ export default {
    
 
    
-    async getEvents() {
-      //let snapshot = await db.collection("user").get();
-      //let events = [];
-     // snapshot.forEach(doc => {
-       // let appData = doc.data();
-       // console.log(appData);
-       // appData.id = doc.id;
-       // events.push(appData);
-     // });
-      //this.events = events;
+    async addPerp() {
+
+      this.perpnames.push(this.currentperp);
+      this.currentperp="";
+      
     },
     
     async addCase() {
-      console.log(this.checkedNames);
-      if (this.casetype && this.physical
-       && this.inhaler) {
-        await db.collection("patient").add({
+      console.log(this.casetype);
+      if (this.casetype && this.physical) {
+        await db.collection("reports").add({
           casetype: this.casetype,
           physical: this.physical,
+          date: this.picker,
+          perpnames: this.perpnames
   
         });
-        //this.getEvents();
-        (this.casetype = ""),
+       
+        (this.casetype = ""), (this.picker = ""),
           (this.physical = "");
         alert("Succeessfully added");
        
