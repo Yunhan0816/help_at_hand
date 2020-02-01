@@ -1,7 +1,7 @@
 <template>
 <v-sheet>
-  <v-btn color="pink lighten-1" dark @click.stop="dialog = true" x-large = true
-    >I want to report a sexual assulat case</v-btn
+  <v-btn color="#faa69b" dark @click.stop="dialog = true" x-large = true
+    >I want to report a sexual assualt case</v-btn
   >
 <v-dialog v-model="dialog" max-width="500">
         <v-card>
@@ -32,7 +32,7 @@
               ></v-select> -->
               <v-select :items="physicalBoolean" v-model="physical" label="Were you physically hurt?"></v-select>
               
-              <v-date-picker v-model="picker"></v-date-picker>
+              <v-date-picker v-model="picker" color=#faa69b></v-date-picker>
             <v-text-field
               v-model="currentperp"
               type="text"
@@ -47,17 +47,26 @@
               ></v-select>
               <br>
             <v-btn
-                color="pink lighten-1"
+                color="#faa69b"
                 class="mr-4"
                 @click="addPerp"
               >Add another</v-btn>
             
             <br>
             <br>
+            <v-text-field
+              v-model="details"
+              type="text"
+              label="Details of the incident"
+              
+            ></v-text-field>
+
+            <br>
+
               <v-row justify="center"></v-row>
               <v-btn
                 type="submit"
-                color="pink lighten-1"
+                color="#faa69b"
                 class="mr-4"
                 @click.stop="dialog = false"
               >Submit Case</v-btn>
@@ -104,6 +113,7 @@ export default {
     currentperp: "",
     perpnames: [],
     relation: [],
+    details: '',
     // inhaler: ["Yes", "No"],
     
    
@@ -132,15 +142,15 @@ export default {
           physicalBoolean: this.physicalBoolean,
           date: this.picker,
           perpnames: this.perpnames,
+          details: this.details,
           test:({"perpnames": this.perpnames, "perprelations": this.relation}),
 
         
-          //tests : {this.perpnames[0] :  this.relation }
   
         });
        
         (this.casetype = ""), (this.picker = ""),
-          (this.physicalBoolean = "");
+          (this.physicalBoolean = ""), (this.details = "");
         alert("Succeessfully added");
        
       } else {

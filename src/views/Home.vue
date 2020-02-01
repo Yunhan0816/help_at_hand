@@ -1,4 +1,8 @@
 <template>
+<v-parallax
+    dark
+    src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+  >
   <v-app id="inspire">
     <v-app-bar app clipped>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
@@ -19,6 +23,7 @@
       <span>&copy; TechTogether 2020</span>
     </v-footer>
   </v-app>
+  </v-parallax>
 </template>
 
 <script>

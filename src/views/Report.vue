@@ -1,19 +1,33 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar app clipped>
+  <v-app class="inspire">
+    <v-parallax
+    dark
+    src="@/assets/background.png"
+    class = "background"
+    height = "770"
+  >
+  <v-row
+      align="center"
+      justify="center"
+    >
+     <v-app-bar app clipped>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title>Help At Hand</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
+    
 
     <v-content>
       <v-container class="fill-height" fluid>
+
         <Report />
-      </v-container>
-    </v-content>
+      </v-container> 
+    </v-content> 
     <v-footer app>
       <span>&copy; TechTogether 2020</span>
     </v-footer>
+    </v-row>
+  </v-parallax>
   </v-app>
 </template>
 <script>
@@ -31,3 +45,9 @@ export default {
 };
 // testing
 </script>
+<style scoped>
+#background {
+  max-height: 100%
+
+}
+</style>
