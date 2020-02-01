@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # help_at_hand
 
 ## Project setup
@@ -22,3 +23,6 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# help_at_hand
+>>>>>>> a7b0971e9881a74032f4de9f66774c0fe84e0a9a
