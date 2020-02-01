@@ -1,9 +1,8 @@
 <template>
 <v-sheet>
-  <v-btn color="pink lighten-1" dark @click.stop="dialog = true"
+  <v-btn color="pink lighten-1" dark @click.stop="dialog = true" x-large = true
     >I want to report a sexual assulat case</v-btn
   >
-
 <v-dialog v-model="dialog" max-width="500">
         <v-card>
           <v-container>
@@ -31,25 +30,30 @@
                 v-model="casetype"
                 label="Select your condition today! (Required)"
               ></v-select> -->
-              <v-select :items="physical" v-model="physical" label="Were you physically hurt?"></v-select>
+              <v-select :items="physicalBoolean" v-model="physical" label="Were you physically hurt?"></v-select>
               
               <v-date-picker v-model="picker"></v-date-picker>
-
-              
             <v-text-field
               v-model="currentperp"
               type="text"
               label="Name of the perpetrator (optional)"
               
             ></v-text-field>
-            <br>
+            
+            <v-select
+                :items="relations"
+                v-model="relation"
+                label="Relation to the perpetrator"
+              ></v-select>
+              <br>
             <v-btn
                 color="pink lighten-1"
                 class="mr-4"
                 @click="addPerp"
               >Add another</v-btn>
             
-
+            <br>
+            <br>
               <v-row justify="center"></v-row>
               <v-btn
                 type="submit"
@@ -86,10 +90,20 @@ export default {
       "Focible sodomy",
       "Sexual Harrassment"
     ],
+    relations: [
+      "Stranger",
+      "Acquaintance or Friend",
+      "Partner",
+      "Family or Guardian",
+      "Colleague or Employer",
+      "Teacher or other adult"
+
+    ],
     // pill: ["Yes", "No"],
-    physical: ["Yes","No"],
+    physicalBoolean: ["Yes","No"],
     currentperp: "",
     perpnames: [],
+    relation: [],
     // inhaler: ["Yes", "No"],
     
    
@@ -103,11 +117,6 @@ export default {
     
   },
   methods: {
-
-    
-   
-
-   
     async addPerp() {
 
       this.perpnames.push(this.currentperp);
@@ -117,17 +126,21 @@ export default {
     
     async addCase() {
       console.log(this.casetype);
-      if (this.casetype && this.physical) {
+      if (this.casetype && this.physicalBoolean) {
         await db.collection("reports").add({
           casetype: this.casetype,
-          physical: this.physical,
+          physicalBoolean: this.physicalBoolean,
           date: this.picker,
-          perpnames: this.perpnames
+          perpnames: this.perpnames,
+          test:({"perpnames": this.perpnames, "perprelations": this.relation}),
+
+        
+          //tests : {this.perpnames[0] :  this.relation }
   
         });
        
         (this.casetype = ""), (this.picker = ""),
-          (this.physical = "");
+          (this.physicalBoolean = "");
         alert("Succeessfully added");
        
       } else {
