@@ -8,8 +8,10 @@
         <v-row align="center" justify="center">
            <v-app-bar app clipped>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Help At Hand</v-toolbar-title>
+      <H1><v-toolbar-title><span class="teal--text">Help@hand</span></v-toolbar-title></H1>
       <v-spacer></v-spacer>
+      <span style="padding-right: 5px"><v-icon large color="teal darken-2">mdi-phone </v-icon></span>
+      <H1><v-toolbar-title><span class="teal--text">National Sexual Assault Helpline: 1-800-656-4673</span></v-toolbar-title></H1>
       <!-- <v-btn icon :to="{ path: 'doctor' }">
         <v-icon>mdi-doctor</v-icon>
       </v-btn> -->
