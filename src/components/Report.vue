@@ -1,13 +1,17 @@
 <template>
 <v-container>
   <transition name="slide-fade">
-  <v-card outlined = false v-if=show color = "transparent"> 
-    <v-card-text class="display-3 font-weight-bold">You Are Not Alone 
+  <v-card outlined = false align = "center" v-if=show color = "transparent"> 
+    <v-card-text class="display-4 font-weight-bold">You Are Not Alone 
     </v-card-text>
     </v-card>
   </transition> 
-<v-btn color="#faa69b" dark @click.stop="dialog = true" x-large = true
-    >I want to report a sexual assualt case</v-btn>
+  <transition name="fade">
+<v-layout v-if=showbutton align-center justify-center>
+<v-btn  id="report_button" rounded type="danger" align="center" @click.stop="dialog = true" x-large = true
+    >I want to report a sexual assault case</v-btn>
+</v-layout>
+  </transition>
     <v-sheet>
 <v-dialog v-model="dialog" max-width="500">
   
@@ -127,6 +131,8 @@ export default {
     relation: [],
     details: '',
     show:false,
+    showbutton:false,
+    
     // inhaler: ["Yes", "No"],
     
    
@@ -141,7 +147,8 @@ export default {
   },
   methods: {
     async welcome() {
-    setTimeout(() => this.show = true, 1000);
+    setTimeout(() => this.show = true, 500);
+    setTimeout(() => this.showbutton = true, 2000);
     
     },
     async addPerp() {
@@ -182,15 +189,18 @@ export default {
 </script>
 
 <style scoped>
-/* .fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+ .fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
 }
 .fade-enter, .fade-leave-to  {
   opacity: 0;
+} 
+/* #report_button {
+  text-align: center;
 } */
 
 .slide-fade-enter-active {
-  transition: all 2s ease;
+  transition: all 3s ease;
 }
 .slide-fade-leave-active {
   transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
