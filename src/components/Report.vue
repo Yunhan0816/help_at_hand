@@ -113,12 +113,14 @@
               <br />
 
               <v-row justify="center"></v-row>
-              <v-btn
-                type="submit"
-                color="#faa69b"
-                class="mr-4"
-                @click.stop="dialog = false"
-              >Submit Case</v-btn>
+              <router-link :to="{ name: 'report' }">
+                <v-btn
+                  type="submit"
+                  color="#faa69b"
+                  class="mr-4"
+                  @click.stop="dialog = false"
+                >Submit Case</v-btn>
+              </router-link>
             </v-form>
           </v-container>
         </v-card>
