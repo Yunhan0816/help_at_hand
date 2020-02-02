@@ -6,6 +6,20 @@
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
           <v-toolbar-title>Help At Hand</v-toolbar-title>
           <v-spacer></v-spacer>
+          <router-link :to="{ name: 'map' }">
+            <v-layout align-center justify-center>
+              <v-btn
+                id="findhospital"
+                rounded
+                type="danger"
+                align="center"
+                @click="toggleLable"
+                x-large="true"
+              >
+                <a id="buttontext">Show Me Local Hospitals</a>
+              </v-btn>
+            </v-layout>
+          </router-link>
         </v-app-bar>
 
         <v-content>
@@ -36,6 +50,9 @@ export default {
 // testing
 </script>
 <style scoped>
+#buttontext {
+  color: teal;
+}
 #background {
   max-height: 100%;
 }
