@@ -30,42 +30,48 @@
             
             <v-form @submit.prevent="addCase">
               <div id='example-3'>
+                <label class="teal--text headline font-weight-bold">What was the incident?</label>
+                <br>
                 <input type="checkbox" id="rape" value="Rape" v-model="casetype">
-                <label for="rape">Rape</label>
+              
+                <label for="rape">  Rape</label>
                 <br>
                 <input type="checkbox" id="unwantedtouching" value="Unwanted Touching" v-model="casetype">
-                <label for="unwantedtouching">Unwanted Touching</label>
+                <label for="unwantedtouching">  Unwanted Touching</label>
                 <br>
                 <input type="checkbox" id="minors" value="Sexual Contact with Minors" v-model="casetype">
-                <label for="minors">Sexual Contact with Minors</label>
+                <label for="minors">  Sexual Contact with Minors</label>
                 <br>
                 <input type="checkbox" id="sexualharrassment" value="Sexual Harrassment" v-model="casetype">
-                <label for="sexualharrassment">Sexual Harrassment</label>
+                <label for="sexualharrassment">  Sexual Harrassment</label>
                 <br>
                 <input type="checkbox" id="fociblesodomy" value="Focible sodomy" v-model="casetype">
-                <label for="fociblesodomy">Focible sodomy</label>
+                <label for="fociblesodomy">  Focible sodomy</label>
                 <br>
-               <!-- <span>Checked names: {{ casetype }}</span> -->
+        
               </div>
-              <!-- <v-select
-                :items="casetype"
-                v-model="casetype"
-                label="Select your condition today! (Required)"
-              ></v-select> -->
-              <v-select :items="physicalBoolean" v-model="physical" label="Were you physically hurt?"></v-select>
+              <br><br>
+              <label class="teal--text headline font-weight-bold">Were you physically hurt?</label>
+              <v-select :items="physicalBoolean" v-model="physical" solo></v-select>
               
+              <br>
+              <label class="teal--text headline font-weight-bold">When did it happen?</label>
+              <br>
               <v-date-picker v-model="picker" color=#faa69b></v-date-picker>
+              <br><br><br>
+              <label class="teal--text headline font-weight-bold">Who is involved?</label>
             <v-text-field
               v-model="currentperp"
               type="text"
-              label="Name of the perpetrator (optional)"
-              
+              label="Name of the perpetrator"
+              color=#faa69b
             ></v-text-field>
             
             <v-select
                 :items="relations"
-                v-model="relation"
+                v-model="currentrelation"
                 label="Relation to the perpetrator"
+                color=#faa69b
               ></v-select>
               <br>
             <v-btn
@@ -83,7 +89,19 @@
               
             ></v-text-field>
 
-            <br>
+            
+            <vue-google-autocomplete
+            ref="address"
+    id="map"
+    classname="form-control"
+    placeholder="Enter Address"
+    country = "us"
+    label= "Address"
+    v-on:placechanged="getAddressData">
+
+            </vue-google-autocomplete>
+
+            <br><br><br>
 
               <v-row justify="center"></v-row>
               <v-btn
@@ -103,7 +121,12 @@
 
 <script>
 import { db } from "@/main";
+import VueGoogleAutocomplete from 'vue-google-autocomplete'
+
 export default {
+  components:{
+    VueGoogleAutocomplete
+  },
   
     data: () => ({
       
@@ -133,16 +156,14 @@ export default {
     // pill: ["Yes", "No"],
     physicalBoolean: ["Yes","No"],
     currentperp: "",
+    currentrelation: "",
     perpnames: [],
     relation: [],
     details: '',
     show:false,
     showsub:false,
     showbutton:false,
-    
-    // inhaler: ["Yes", "No"],
-    
-   
+    address:'', 
     dialog: false
   }),
   
@@ -161,8 +182,13 @@ export default {
     },
     async addPerp() {
       this.perpnames.push(this.currentperp);
+      this.relation.push(this.currentrelation);
       this.currentperp="";
+      this.currentrelation="";
       
+    },
+    async getAddressData(address ) {
+      this.address = address;
     },
     
     async addCase() {
