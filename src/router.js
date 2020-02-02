@@ -23,6 +23,11 @@ const router = new VueRouter({
       name: "map",
       component: () => import("./views/Hospital.vue")
     },
+    {
+      path: "/assault",
+      name: "assault",
+      component: () => import("./views/Assault.vue")
+    },
 
 
     {
