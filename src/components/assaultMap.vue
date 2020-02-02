@@ -23,17 +23,17 @@ export default {
 
       });
       const location = [{lat: 42.3348, lng: -71.0733}, {lat: 42.362, lng: -71.06}, {lat:42.3361, lng: -71.1075}, {lat: 42.3397, lng: -71.1049}, {lat: 42.2867,  lng: -71.1485}];
-      const marker1 = new google.maps.Marker({position: location[0], label: 'H', map: map});
+      const marker1 = new google.maps.Marker({position: location[0], label: '1', map: map});
       marker1.location
-      const marker2 = new google.maps.Marker({position: location[1], label: 'H',map: map});
+      const marker2 = new google.maps.Marker({position: location[1], label: '4',map: map});
       marker2.location
       
-      const marker3 = new google.maps.Marker({position: location[2], label: 'H',map: map});
+      const marker3 = new google.maps.Marker({position: location[2], label: '9',map: map});
       marker3.location
-      const marker4 = new google.maps.Marker({position: location[3], label: 'H',map: map});
+      const marker4 = new google.maps.Marker({position: location[3], label: '3',map: map});
       marker4.location
 
-      const marker5 = new google.maps.Marker({position: location[4], label: 'P',map: map});
+      const marker5 = new google.maps.Marker({position: location[4], label: '2',map: map});
       marker5.location
 
       
