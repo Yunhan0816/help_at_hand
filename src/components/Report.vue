@@ -6,6 +6,14 @@
     </v-card-text>
     </v-card>
   </transition> 
+
+  <transition name="slide-fade">
+  <v-card outlined = false align = "center" v-if=showsub color = "transparent"> 
+    <v-card-text class="display-2 font-weight-light">Your act of speaking out has the power to heal and change on a broader scale than you may know.  
+    </v-card-text>
+    </v-card>
+  </transition>
+
   <transition name="fade">
 <v-layout v-if=showbutton align-center justify-center>
 <v-btn  id="report_button" rounded type="danger" align="center" @click.stop="dialog = true" x-large = true
@@ -129,6 +137,7 @@ export default {
     relation: [],
     details: '',
     show:false,
+    showsub:false,
     showbutton:false,
     
     // inhaler: ["Yes", "No"],
@@ -146,7 +155,8 @@ export default {
   methods: {
     async welcome() {
     setTimeout(() => this.show = true, 500);
-    setTimeout(() => this.showbutton = true, 2000);
+    setTimeout(() => this.showsub = true, 2000);
+    setTimeout(() => this.showbutton = true, 3500);
     
     },
     async addPerp() {

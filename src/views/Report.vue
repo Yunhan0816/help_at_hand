@@ -1,11 +1,6 @@
 <template>
   <v-app class="inspire">
-    <v-parallax
-      dark
-      src="@/assets/background.png"
-      class="background"
-      height="770"
-    >
+    <v-parallax dark src="@/assets/background.png" class="background" height="770">
       <v-row align="center" justify="center">
         <v-app-bar app clipped>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
