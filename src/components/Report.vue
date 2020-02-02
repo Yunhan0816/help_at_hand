@@ -102,7 +102,6 @@
 </template>
 
 <script>
-
 import { db } from "@/main";
 export default {
   
@@ -130,7 +129,6 @@ export default {
       "Family or Guardian",
       "Colleague or Employer",
       "Teacher or other adult"
-
     ],
     // pill: ["Yes", "No"],
     physicalBoolean: ["Yes","No"],
@@ -162,7 +160,6 @@ export default {
     
     },
     async addPerp() {
-
       this.perpnames.push(this.currentperp);
       this.currentperp="";
       
@@ -193,7 +190,6 @@ export default {
     },
  
    
-
   }
 };
 </script>
@@ -208,7 +204,10 @@ export default {
 /* #report_button {
   text-align: center;
 } */
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4c00babbba4c212254ae759c9fdb27f1e2bf2219
 .slide-fade-enter-active {
   transition: all 3s ease;
 }

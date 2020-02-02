@@ -10,13 +10,18 @@ const router = new VueRouter({
   routes: [
     {
       path: "/",
-      name: "home",
+      // name: "home",
       component: () => import("./views/Home.vue")
     },
     {
       path: "/report",
       name: "report",
       component: () => import("./views/Report.vue")
+    },
+    {
+      path: "/map",
+      name: "map",
+      component: () => import("./views/Hospital.vue")
     },
 
 
