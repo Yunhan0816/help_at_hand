@@ -24,6 +24,7 @@ const router = new VueRouter({
       component: () => import("./views/Hospital.vue")
     },
 
+
     {
       path: "/login",
       name: "login",
