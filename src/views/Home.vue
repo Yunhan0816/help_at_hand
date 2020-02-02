@@ -29,9 +29,6 @@
               <span class="teal--text">National Sexual Assault Helpline: 1-800-656-4673</span>
             </v-toolbar-title>
           </H1>
-          <!-- <v-btn icon :to="{ path: 'doctor' }">
-        <v-icon>mdi-doctor</v-icon>
-          </v-btn>-->
         </v-app-bar>
         <v-content>
           <v-content class="typingText">

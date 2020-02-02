@@ -19,6 +19,11 @@ const router = new VueRouter({
       component: () => import("./views/Report.vue")
     },
     {
+      path: "/chat",
+      name: "chat",
+      component: () => import("./views/Chat.vue")
+    },
+    {
       path: "/map",
       name: "map",
       component: () => import("./views/Hospital.vue")
@@ -28,7 +33,6 @@ const router = new VueRouter({
       name: "assault",
       component: () => import("./views/Assault.vue")
     },
-
 
     {
       path: "/login",

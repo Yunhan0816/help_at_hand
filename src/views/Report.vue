@@ -20,6 +20,11 @@
               </v-btn>
             </v-layout>
           </router-link>
+          <router-link :to="{ name: 'chat' }">
+            <v-btn rounded type="danger" align="center" @click="toggleLable" x-large="true">
+              <a id="buttontext">Go to Chat</a>
+            </v-btn>
+          </router-link>
         </v-app-bar>
 
         <v-content>
@@ -55,6 +60,9 @@ export default {
 }
 #background {
   max-height: 100%;
+}
+.fill_height2 {
+  color: teal;
 }
 .fade-enter-active,
 .fade-leave-active {
