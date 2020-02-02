@@ -31,40 +31,26 @@
         <v-card>
           <v-container>
             <v-form @submit.prevent="addCase">
-              <div id="example-3">
+              <div id='example-3'>
                 <label class="teal--text headline font-weight-bold">What was the incident?</label>
-                <br />
-                <input type="checkbox" id="rape" value="Rape" v-model="casetype" />
-
-                <label for="rape">Rape</label>
-                <br />
-                <input
-                  type="checkbox"
-                  id="unwantedtouching"
-                  value="Unwanted Touching"
-                  v-model="casetype"
-                />
-                <label for="unwantedtouching">Unwanted Touching</label>
-                <br />
-                <input
-                  type="checkbox"
-                  id="minors"
-                  value="Sexual Contact with Minors"
-                  v-model="casetype"
-                />
-                <label for="minors">Sexual Contact with Minors</label>
-                <br />
-                <input
-                  type="checkbox"
-                  id="sexualharrassment"
-                  value="Sexual Harrassment"
-                  v-model="casetype"
-                />
-                <label for="sexualharrassment">Sexual Harrassment</label>
-                <br />
-                <input type="checkbox" id="fociblesodomy" value="Focible sodomy" v-model="casetype" />
-                <label for="fociblesodomy">Focible sodomy</label>
-                <br />
+                <br>
+                <input type="checkbox" id="rape" value="Rape" v-model="casetype">
+              
+                <label for="rape">  Rape</label>
+                <br>
+                <input type="checkbox" id="unwantedtouching" value="Unwanted Touching" v-model="casetype">
+                <label for="unwantedtouching">  Unwanted Touching</label>
+                <br>
+                <input type="checkbox" id="minors" value="Sexual Contact with Minors" v-model="casetype">
+                <label for="minors">  Sexual Contact with Minors</label>
+                <br>
+                <input type="checkbox" id="sexualharrassment" value="Sexual Harrassment" v-model="casetype">
+                <label for="sexualharrassment">  Sexual Harrassment</label>
+                <br>
+                <input type="checkbox" id="fociblesodomy" value="Focible sodomy" v-model="casetype">
+                <label for="fociblesodomy">  Focible sodomy</label>
+                <br>
+        
               </div>
               <br />
               <br />
@@ -77,6 +63,18 @@
               <br />
               <br />
               <br />
+              <label class="teal--text headline font-weight-bold">Where did it happen?</label>
+              <br>
+              <vue-google-autocomplete
+                ref="address"
+                id="map"
+                class="form-control"
+                placeholder="Enter Address"
+                country="us"
+                label="Address"
+                v-on:placechanged="getAddressData"
+              ></vue-google-autocomplete>
+              <br><br><br>
               <label class="teal--text headline font-weight-bold">Who is involved?</label>
               <v-text-field
                 v-model="currentperp"
@@ -96,31 +94,24 @@
 
               <br />
               <br />
-              <v-text-field v-model="details" type="text" label="Details of the incident"></v-text-field>
+              <br>
 
-              <vue-google-autocomplete
-                ref="address"
-                id="map"
-                class="form-control"
-                placeholder="Enter Address"
-                country="us"
-                label="Address"
-                v-on:placechanged="getAddressData"
-              ></vue-google-autocomplete>
+              <label class="teal--text headline font-weight-bold">Any more details?</label>
+              <v-text-field v-model="details" type="text" color=#faa69b label="Details of the incident"></v-text-field>
 
-              <br />
-              <br />
-              <br />
+              
+
+              <br>
+              <br>
+              
 
               <v-row justify="center"></v-row>
-              <router-link :to="{ name: 'report' }">
-                <v-btn
-                  type="submit"
-                  color="#faa69b"
-                  class="mr-4"
-                  @click.stop="dialog = false"
-                >Submit Case</v-btn>
-              </router-link>
+              <v-btn
+                type="submit"
+                color="#faa69b"
+                class="mr-4"
+                @click.stop="dialog = false"
+              >Submit Case</v-btn>
             </v-form>
           </v-container>
         </v-card>
@@ -202,7 +193,8 @@ export default {
           physicalBoolean: this.physicalBoolean,
           date: this.picker,
           perpnames: this.perpnames,
-          details: this.details
+          details: this.details,
+          perprelations: this.relation
           // test: { perpnames: this.perpnames, perprelations: this.relation }
         });
 
@@ -210,7 +202,7 @@ export default {
           (this.picker = ""),
           (this.physicalBoolean = ""),
           (this.date = Date()),
-          (this.prepnames = []),
+          (this.perpnames = []),
           (this.details = "");
         alert("Succeessfully added");
         this.welcome();
