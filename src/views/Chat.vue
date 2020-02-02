@@ -27,7 +27,7 @@
         <v-app-bar app clipped>
           <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
           <v-toolbar-title>Help At Hand</v-toolbar-title>
-          <router-link :to="{ name: 'report' }">
+          <router-link :to="{ name: 'report' }" id="goBack">
             <v-btn rounded type="danger" @click="toggleLable" x-large="true">
               <a id="buttontext">Go Back</a>
             </v-btn>
@@ -66,4 +66,11 @@ export default {
   text-align: center;
   color: #2c3e50;
 }
+#goBack {
+  margin-left: 1000px;
+}
+
+/* .chatBox {
+  background: white;
+} */
 </style>
