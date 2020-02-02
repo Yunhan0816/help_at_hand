@@ -63,6 +63,16 @@
                       </v-btn>
                     </v-layout>
                   </router-link>
+                   <router-link :to="{ name: 'chat' }">
+                    <v-btn
+                      rounded
+                      type="danger"
+                      align="center"
+                      @click="toggleLable"
+                      x-large="true"
+                      >Go to Chat</v-btn
+                    >
+                  </router-link>
                 </div>
               </v-flex>
             </v-layout>

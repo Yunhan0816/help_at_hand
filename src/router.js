@@ -19,6 +19,11 @@ const router = new VueRouter({
       component: () => import("./views/Report.vue")
     },
     {
+      path: "/chat",
+      name: "chat",
+      component: () => import("./views/Chat.vue")
+    },
+    {
       path: "/map",
       name: "map",
       component: () => import("./views/Hospital.vue")
@@ -33,7 +38,7 @@ const router = new VueRouter({
     {
       path: "/login",
       name: "login",
-      component: () => import("./views/Login.vue"),
+      component: () => import("./views/login.vue"),
       meta: {
         requiresAuth: false
       }
