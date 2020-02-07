@@ -226,6 +226,10 @@ export default {
 /* #report_button {
   text-align: center;
 } */
+<<<<<<< HEAD
+
+=======
+>>>>>>> 4c00babbba4c212254ae759c9fdb27f1e2bf2219
 .slide-fade-enter-active {
   transition: all 3s ease;
 }
